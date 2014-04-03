@@ -100,8 +100,8 @@
   for (var i = 0; i < browsers.length; i++) {
     var choice = newTag("li"),
         cst = choice.style,
-        logoContainer = newTag("div"),
-        lcs = logoContainer.style,
+        logo = newTag("img"),
+        ls = logo.style,
         choiceName = newTag("p"),
         cns = choiceName.style,
         choiceLink = newTag("a"),
@@ -119,14 +119,12 @@
     choiceLink.href = urls[i];
     chls.textDecoration = "none";
 
-    // Style logo
-    lcs.width = lcs.height = "100px";
-    lcs.margin = pxAutoMargin;
-    lcs.background = "transparent url('" + imagesPath + logos[i] + ".gif') no-repeat scroll left top";
-    // Although the cursor rule was set on the parent element IE6+7
-    // don't show the pointer cursor when hovering over the logo
-    // container.
-    lcs.cursor = "pointer";
+    // Style
+    logo.src = imagesPath + logos[i] + ".gif";
+    logo.width = logo.height = "100";
+    logo.border = "0";
+    ls.display = "block";
+    ls.margin = pxAutoMargin;
 
     // Style choice name
     choiceName.innerHTML = browsers[i];
@@ -138,7 +136,7 @@
 
     // Assemble choice
     choice.appendChild(choiceLink);
-    choiceLink.appendChild(logoContainer);
+    choiceLink.appendChild(logo);
     choiceLink.appendChild(choiceName);
     choicesList.appendChild(choice);
   }
